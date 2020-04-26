@@ -20,13 +20,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Build binary
-      run: pyxelpackager game.py && mv dist game
+    - name: Build standalone executable
+      run: pyxelpackager game.py
     - name: Upload artifact
       uses: actions/upload-artifact@v1
       with:
         name: game-linux
-        path: game
+        path: dist
   mac:
     runs-on: macos-latest
     steps:
@@ -41,13 +41,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Build binary
-      run: pyxelpackager game.py && mv dist game
+    - name: Build standalone executable
+      run: pyxelpackager game.py
     - name: Upload artifact
       uses: actions/upload-artifact@v1
       with:
         name: game-mac
-        path: game
+        path: dist
   windows:
     runs-on: windows-latest
     steps:
@@ -60,11 +60,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Build binary
-      run: pyxelpackager game.py && move dist game
+    - name: Build standalone executable
+      run: pyxelpackager game.py
     - name: Upload artifact
       uses: actions/upload-artifact@v1
       with:
         name: game-windows
-        path: game
+        path: dist
 
