@@ -1,4 +1,4 @@
-name: package
+name: build
 
 on:
   push:
@@ -13,8 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - uses: actions/setup-python@v2
       with:
         python-version: 3.8
     - name: Install native dependencies
@@ -32,10 +31,13 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
     - name: Install native dependencies
-      run: brew install python3 gcc sdl2 sdl2_image gifsicle
+      run: brew install gcc sdl2 sdl2_image gifsicle
     - name: Install Python modules
-      run: pip3 install -r requirements.txt
+      run: pip install -r requirements.txt
     - name: Build standalone executable
       run: pyxelpackager game.py
     - name: Upload artifact
@@ -47,8 +49,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - uses: actions/setup-python@v2
       with:
         python-version: 3.8
     - name: Install Python modules
