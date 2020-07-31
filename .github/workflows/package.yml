@@ -37,7 +37,7 @@ jobs:
       with:
         python-version: 3.8
     - name: Install native dependencies
-      run: brew install gcc sdl2 sdl2_image
+      run: brew install gcc sdl2 sdl2_image gifsicle
     - name: Install Python modules
       run: pip install -r requirements.txt
     - name: Build standalone executable
