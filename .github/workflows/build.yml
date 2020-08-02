@@ -22,8 +22,7 @@ jobs:
       run: pip install -r requirements.txt
     - name: Build standalone executable
       run: pyxelpackager game.py
-    - name: Upload artifact
-      uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v2
       with:
         name: game-linux
         path: dist
@@ -40,8 +39,7 @@ jobs:
       run: pip install -r requirements.txt
     - name: Build standalone executable
       run: pyxelpackager game.py
-    - name: Upload artifact
-      uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v2
       with:
         name: game-mac
         path: dist
@@ -56,8 +54,7 @@ jobs:
       run: pip install -r requirements.txt
     - name: Build standalone executable
       run: pyxelpackager game.py
-    - name: Upload artifact
-      uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v2
       with:
         name: game-windows
         path: dist
