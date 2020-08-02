@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: 3.8
       - name: Install native dependencies
-        run: sudo apt-get update && sudo apt-get install libsdl2-dev libsdl2-image-dev
+        run: sudo apt-get update && sudo apt-get install libsdl2-dev libsdl2-image-dev gifsicle
       - name: Install Python modules
         run: pip install -r requirements.txt
       - name: Build standalone executable
@@ -32,7 +32,7 @@ jobs:
         with:
           python-version: 3.8
       - name: Install native dependencies
-        run: brew install gcc sdl2 sdl2_image gifsicle
+        run: brew install sdl2 sdl2_image gifsicle
       - name: Install Python modules
         run: pip install -r requirements.txt
       - name: Build standalone executable
