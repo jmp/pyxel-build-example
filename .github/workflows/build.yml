@@ -1,5 +1,4 @@
 name: build
-
 on:
   push:
     branches:
@@ -7,54 +6,53 @@ on:
   pull_request:
     branches:
       - master
-
 jobs:
   linux:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-    - name: Install native dependencies
-      run: sudo apt-get update && sudo apt-get install libsdl2-dev libsdl2-image-dev
-    - name: Install Python modules
-      run: pip install -r requirements.txt
-    - name: Build standalone executable
-      run: pyxelpackager game.py
-    - uses: actions/upload-artifact@v2
-      with:
-        name: game-linux
-        path: dist
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install native dependencies
+        run: sudo apt-get update && sudo apt-get install libsdl2-dev libsdl2-image-dev
+      - name: Install Python modules
+        run: pip install -r requirements.txt
+      - name: Build standalone executable
+        run: pyxelpackager game.py
+      - uses: actions/upload-artifact@v2
+        with:
+          name: game-linux
+          path: dist
   mac:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-    - name: Install native dependencies
-      run: brew install gcc sdl2 sdl2_image gifsicle
-    - name: Install Python modules
-      run: pip install -r requirements.txt
-    - name: Build standalone executable
-      run: pyxelpackager game.py
-    - uses: actions/upload-artifact@v2
-      with:
-        name: game-mac
-        path: dist
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install native dependencies
+        run: brew install gcc sdl2 sdl2_image gifsicle
+      - name: Install Python modules
+        run: pip install -r requirements.txt
+      - name: Build standalone executable
+        run: pyxelpackager game.py
+      - uses: actions/upload-artifact@v2
+        with:
+          name: game-mac
+          path: dist
   windows:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-    - name: Install Python modules
-      run: pip install -r requirements.txt
-    - name: Build standalone executable
-      run: pyxelpackager game.py
-    - uses: actions/upload-artifact@v2
-      with:
-        name: game-windows
-        path: dist
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install Python modules
+        run: pip install -r requirements.txt
+      - name: Build standalone executable
+        run: pyxelpackager game.py
+      - uses: actions/upload-artifact@v2
+        with:
+          name: game-windows
+          path: dist
