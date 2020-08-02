@@ -1,2 +1,2 @@
-pyxel==1.4.0
+pyxel==1.4.1
 PyInstaller==3.6
